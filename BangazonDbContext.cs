@@ -2,15 +2,18 @@
 using Bangazon.Models;
 using System.Runtime.CompilerServices;
 
-public class CreekRiverDbContext : DbContext
+public class BangazonDbContext : DbContext
 {
 
-    public DbSet<Reservation> Reservations { get; set; }
-    public DbSet<UserProfile> UserProfiles { get; set; }
-    public DbSet<Campsite> Campsites { get; set; }
-    public DbSet<CampsiteType> CampsiteTypes { get; set; }
+    public DbSet<Orders> Orders { get; set; }
+    public DbSet<OrderStatus> OrderStatus { get; set; }
+    public DbSet<PaymentType> PaymentType { get; set; }
+    public DbSet<ProductCategories> ProductCategories { get; set; }
+    public DbSet<Products> Products { get; set; }
+    public DbSet<Users> Users { get; set; }
+    public DbSet<UserPaymentJoinTable> UserPaymentJoinTables { get; set; }
 
-    public CreekRiverDbContext(DbContextOptions<CreekRiverDbContext> context) : base(context)
+    public BangazonDbContext(DbContextOptions<BangazonDbContext> context) : base(context)
     {
 
     }
