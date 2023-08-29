@@ -37,6 +37,12 @@ app.MapGet("/api/Products", (BangazonDbContext db) =>
     return db.Products.ToList();
 });
 
+
+app.MapGet("api/products/{id}", (BangazonDbContext db, int id) =>
+{
+    Products product = db.Products.SingleOrDefault(pr => pr.Id == id);
+    return product;
+});
 app.UseHttpsRedirection();
 
 
