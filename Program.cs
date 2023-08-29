@@ -31,18 +31,40 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+// get products
 app.MapGet("/api/Products", (BangazonDbContext db) =>
 {
     return db.Products.ToList();
 });
 
-
+// get products by id 
 app.MapGet("api/products/{id}", (BangazonDbContext db, int id) =>
 {
     Products product = db.Products.SingleOrDefault(pr => pr.Id == id);
     return product;
 });
+
+// delete products 
+app.MapDelete("api/products/{id}", (BangazonDbContext db, int id) =>
+{
+    Products product = db.Products.SingleOrDefault(pr => pr.Id == id);
+    if (product == null)
+    {
+        return Results.NotFound();
+    }
+    db.Products.Remove(product);
+    db.SaveChanges();
+    return Results.NoContent();
+});
+
+//create products 
+app.MapPost("api/Products", (BangazonDbContext db, Products product) =>
+{
+    db.Products.Add(product);
+    db.SaveChanges();
+    return Results.Created($"/api/Products/{product.Id}", product);
+});
+
 app.UseHttpsRedirection();
 
 
