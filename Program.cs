@@ -32,6 +32,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.MapGet("/api/Products", (BangazonDbContext db) =>
+{
+    return db.Products.ToList();
+});
+
 app.UseHttpsRedirection();
 
 
