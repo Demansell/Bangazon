@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Http.Json;
 using Bangazon;
+using System.Runtime.CompilerServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -63,6 +64,22 @@ app.MapPost("api/Products", (BangazonDbContext db, Products product) =>
     db.Products.Add(product);
     db.SaveChanges();
     return Results.Created($"/api/Products/{product.Id}", product);
+});
+
+// Update a Product
+app.MapPut("api/products/{id}", (BangazonDbContext db, int id, Products product) =>
+{
+    Products productToUpdate = db.Products.SingleOrDefault(product => product.Id == id);
+    if (productToUpdate == null)
+    {
+        return Results.NotFound();
+    }
+    productToUpdate.Name = product.Name;
+    productToUpdate.Price = product.Price;
+    productToUpdate.Image = product.Image;
+
+    db.SaveChanges();
+    return Results.NoContent();
 });
 
 // get all orders

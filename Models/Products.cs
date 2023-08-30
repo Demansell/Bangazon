@@ -10,6 +10,7 @@ namespace Bangazon.Models
         public int Price { get; set; }
         public int CategorieId { get; set; }
 
+        public string Image { get; set;}
         
     }
 }

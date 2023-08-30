@@ -24,10 +24,10 @@ namespace Bangazon
             // seed data with campsite types
             modelBuilder.Entity<Products>().HasData(new Products[]
             {
-        new Products {Id = 1, Name = "Tent", Price = 15, CategorieId = 1},
-        new Products {Id = 2, Name = "RV", Price = 26, CategorieId = 2},
-        new Products {Id = 3, Name = "Primitive", Price = 10, CategorieId = 3},
-        new Products {Id = 4, Name = "Hammock", Price = 12, CategorieId = 4}
+        new Products {Id = 1, Name = "Tent", Price = 15, CategorieId = 1, Image = "https://m.media-amazon.com/images/I/51AC2+BVowL._SX307_BO1,204,203,200_.jpg" },
+        new Products {Id = 2, Name = "RV", Price = 26, CategorieId = 2, Image = "https://m.media-amazon.com/images/I/417IU0f5jwL._SX327_BO1,204,203,200_.jpg"},
+        new Products {Id = 3, Name = "Primitive", Price = 10, CategorieId = 3, Image = "https://m.media-amazon.com/images/I/417IU0f5jwL._SX327_BO1,204,203,200_.jpg"},
+        new Products {Id = 4, Name = "Hammock", Price = 12, CategorieId = 4, Image = "https://m.media-amazon.com/images/I/417IU0f5jwL._SX327_BO1,204,203,200_.jpg"}
             });
 
             modelBuilder.Entity<Orders>().HasData(new Orders[]
