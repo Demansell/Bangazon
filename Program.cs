@@ -65,6 +65,11 @@ app.MapPost("api/Products", (BangazonDbContext db, Products product) =>
     return Results.Created($"/api/Products/{product.Id}", product);
 });
 
+// get all orders
+app.MapGet("/api/Orders", (BangazonDbContext db) => {
+    return db.Orders.ToList();
+});
+
 app.UseHttpsRedirection();
 
 
